@@ -1,0 +1,30 @@
+{% include 'load/meta_head.html' %}
+{% include 'load/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=45%>文件</th>
+  <th width=15%>用户</th>
+  <th width=20%>日期</th>
+  <th width=10%>下载</th>
+  <th width=10%>删除</th>
+</tr></thead>
+{% for w in rawCsvs %}
+<tr>
+  <td>{{ w.filename }}</td>
+  <td>{{ w.user }}</td>
+  <td>{{ w.time|date:"Y-n-j" }}</td>
+  <td><a href="/upload/load/{{ w.fullname }}">下载</a></td>
+  <td><a href="{% url 'load:rawCsv' %}{{ w.fullname }}/del/">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+{% include 'load/meta_footer.html' %}

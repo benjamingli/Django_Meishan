@@ -1,0 +1,27 @@
+{% include 'load/meta_head.html' %}
+{% include 'load/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr align=center><td>
+<h3>
+  <font color=#007979>预测结果数据文件:</font>
+  <a href="/upload/load/{{ result.prefix }}.csv">{{ result.prefix }}.csv</a>
+</h3>
+</td></tr>
+<tr><td>
+
+<table class="table">
+{% for p in pngs %}
+{% if forloop.counter|add:2|divisibleby:3 %}<tr>{% endif %}
+  <td><img src="{{ p }}" width="320px" border="0" /></td>
+{% if forloop.counter|divisibleby:3 %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+<br />
+
+{% include 'load/meta_footer.html' %}

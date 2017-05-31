@@ -1,0 +1,44 @@
+{% include 'load/meta_head.html' %}
+{% include 'load/meta_header.html' %}
+
+<br />
+<br />
+<br />
+<br />
+<div align=center>
+  <a class="btn btn-warning" href="{% url 'load:weather' 0 0 %}">浏览天气</a>
+  <a class="btn btn-warning" href="{% url 'load:weatherConf' %}">设置天气</a>
+</div>
+
+<br />
+<div align=center><span class="caret"></span></div>
+<br />
+
+<div align=center>
+  <a class="btn btn-info" href="{% url 'load:rawCsv' %}">原始文件</a>
+  <a class="btn btn-info" href="{% url 'load:rawCsvConf' %}">上传文件</a>
+</div>
+
+<br />
+<div align=center><span class="caret"></span></div>
+<br />
+
+<div align=center>
+  <a class="btn btn-primary" href="{% url 'load:data' %}">浏览模型</a>
+  <a class="btn btn-primary" href="{% url 'load:dataConf' %}">生成模型</a>
+</div>
+
+<br />
+<div align=center><span class="caret"></span></div>
+<br />
+
+<div align=center>
+  <a class="btn btn-success" href="{% url 'load:result' %}">结果一览</a>
+  <a class="btn btn-success" href="{% url 'load:resultConf' %}">生成结果</a>
+</div>
+
+<br />
+<br />
+<br />
+
+{% include 'load/meta_footer.html' %}

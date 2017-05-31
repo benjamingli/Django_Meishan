@@ -1,0 +1,20 @@
+{% include 'gpxx/meta_head.html' %}
+{% include 'gpxx/meta_header.html' %}
+
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=30%>时间</th>
+  <th width=50%>信息</th>
+  <th width=20%>出现次数</th>
+</tr></thead>
+{{ data|safe }}
+</table>
+
+</td></tr>
+</table>
+<br />
+
+{% include 'gpxx/meta_footer.html' %}

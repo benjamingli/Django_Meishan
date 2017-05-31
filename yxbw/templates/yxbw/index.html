@@ -1,0 +1,40 @@
+{% include 'yxbw/meta_head.html' %}
+{% include 'yxbw/meta_header.html' %}
+
+<table align=center width=960>
+<tr align=right><td>
+  <a class="btn btn-success" href="{% url 'yxbw:conf' %}">新建任务</a>
+</td></tr>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=40%>原始文件</th>
+  <th width=10%>是否累积</th>
+  <th width=10%>厂站浏览</th>
+  <th width=15%>浏览结果</th>
+  <th width=10%>结果下载</th>
+  <th width=10%>生成日期</th>
+  <th width=5%>删除</th>
+</tr></thead>
+{% for t in tasks %}
+<tr>
+  <td><a href="/upload/yxbw/{{ t.fullname }}">{{ t.name }}</a></td>
+  <td>{% if t.accum %}累积{% else %}否{% endif %}</td>
+  <td><a href="{% url 'yxbw:list' t.id %}">厂站</a></td>
+  <td>
+    <a href="{% url 'yxbw:detail' t.id %}">总</a>:
+    <a href="{% url 'yxbw:kg' t.id %}">开关</a>/
+    <a href="{% url 'yxbw:dz' t.id %}">刀闸</a>
+  </td>
+  <td><a href="/upload/yxbw/{{ t.id }}.csv">下载</a></td>
+  <td>{{ t.time|date:"Y-n-j" }}</td>
+  <td><a href="{% url 'yxbw:del' t.id %}">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+{% include 'yxbw/meta_footer.html' %}

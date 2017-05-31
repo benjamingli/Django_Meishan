@@ -1,0 +1,30 @@
+{% include 'load/meta_head.html' %}
+{% include 'load/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=35%>模型名称</th>
+  <th width=25%>预测日期</th>
+  <th width=15%>详细结果</th>
+  <th width=15%>生成日期</th>
+  <th width=10%>删除</th>
+</tr></thead>
+{% for r in results %}
+<tr>
+  <td>{{ r.data }}</td>
+  <td>{{ r.date|date:"Y-n-j" }}</td>
+  <td><a href="{% url 'load:detail' r.id %}">浏览结果</a></td>
+  <td>{{ r.time|date:"Y-n-j" }}</td>
+  <td><a href="{% url 'load:result' %}{{ r.id }}/del/">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+{% include 'load/meta_footer.html' %}

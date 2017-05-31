@@ -1,0 +1,40 @@
+{% include 'bhgj/meta_head.html' %}
+{% include 'bhgj/meta_header.html' %}
+
+<table align=center width=960>
+<tr align=right><td>
+  <a class="btn btn-success" href="{% url 'bhgj:conf' %}">新建任务</a>
+</td></tr>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=30%>原始文件</th>
+  <th width=10%>复归信息</th>
+  <th width=10%>厂站浏览</th>
+  <th width=10%>最新消息</th>
+  <th width=10%>结果下载</th>
+  <th width=10%>生成日期</th>
+  <th width=7%>时阈值</th>
+  <th width=7%>日阈值</th>
+  <th width=6%>删除</th>
+</tr></thead>
+{% for t in tasks %}
+<tr>
+  <td><a href="/upload/bhgj/{{ t.fullname }}">{{ t.name }}</a></td>
+  <td><a href="{% url 'bhgj:reset' t.id %}">超时</a>(<a href="{% url 'bhgj:relist' t.id %}">厂站</a>)</td>
+  <td><a href="{% url 'bhgj:list' t.id %}">厂站</a></td>
+  <td><a href="{% url 'bhgj:detail' t.id %}">查看</a></td>
+  <td><a href="/upload/bhgj/{{ t.id }}.csv">下载</a></td>
+  <td>{{ t.time|date:"Y-n-j" }}</td>
+  <td>{{ t.hourT }}</td>
+  <td>{{ t.dayT }}</td>
+  <td><a href="{% url 'bhgj:del' t.id %}">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+{% include 'bhgj/meta_footer.html' %}

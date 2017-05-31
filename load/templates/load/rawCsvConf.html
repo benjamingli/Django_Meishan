@@ -1,0 +1,42 @@
+{% include 'load/meta_head.html' %}
+<link rel="stylesheet" href="/static/login/loading.css">
+<script src="/static/login/loading.js"></script>
+{% include 'load/meta_header.html' %}
+
+<div id="maskDiv">
+数据处理中...
+</div>
+<br />
+<br />
+<br />
+<br />
+<form enctype="multipart/form-data" action="{% url 'load:rawCsvConf' %}" method="post">
+{% csrf_token %}
+<table align=center width=360>
+  <tr height=35>
+    <td align=right><font color=#007979>示例文件:</font></td>
+    <td align=left>&nbsp&nbsp&nbsp
+      <a href="/static/load/大石桥8月.csv">大石桥8月.csv</a>
+      <!--<a href="/static/load/大石桥8月.xlsx">大石桥8月.xlsx</a>-->
+    </td>
+  </tr>
+  <tr height=35>
+    <td align=right><font color=#007979>上传文件:</font></td>
+    <td align=left><input type="file" name="upfile" /></td>
+  </tr>
+</table>
+<br />
+<div align=center>
+  <button class="btn btn-primary" type="submit" onClick="change()">提交</button>
+</div>
+</form>
+<br />
+
+{% if output %}
+<table align=center width=360><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+
+{% include 'load/meta_footer.html' %}

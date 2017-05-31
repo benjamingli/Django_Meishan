@@ -1,0 +1,31 @@
+<style TYPE="text/css">
+body{background-color:rgba(0,93,93,0.1);}
+</style>
+
+</head>
+<body>
+<table align=center><tr>
+  <td width=960 background="/static/login/header.jpg">
+    <img src="/static/login/logo.png" border="0" />
+  </td>
+</tr>
+<tr>
+<td width=960>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation"><a href="{% url 'login:index' %}">注销</a></li>
+  <li role="presentation"><a href="{% url 'cluster:index' %}">集群状态</a></li>
+  <li role="presentation"><a href="{% url 'load:index' %}">负荷预测</a></li>
+  <li role="presentation" class="active dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      遥信变位<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="{% url 'yxbw:index' %}">遥信变位</a></li>
+      <li><a href="{% url 'ycyx:index' %}">遥测越限</a></li>
+      <li><a href="{% url 'bhgj:index' %}">保护告警</a></li>
+      <li><a href="{% url 'gpxx:index' %}">高频信息</a></li>
+    </ul>
+  </li>
+</ul>
+</td>
+</tr></table>

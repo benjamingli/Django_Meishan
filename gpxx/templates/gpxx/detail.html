@@ -1,0 +1,21 @@
+{% include 'gpxx/meta_head.html' %}
+<link rel="stylesheet" type="text/css" href="/static/gpxx/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/gpxx/css/bootstrap.min.css">
+<script type="text/javascript" src="/static/gpxx/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/gpxx/js/tree.js"></script>
+{% include 'gpxx/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr><td>
+
+{{ data|safe }}
+
+</td></tr>
+<tr align=center><td><font color=#007979>
+  (此页仅显示400条记录,请<a href="/upload/gpxx/{{ task.id }}.csv">下载结果</a>)
+</font></td></tr>
+</table>
+<br />
+
+{% include 'gpxx/meta_footer.html' %}

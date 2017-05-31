@@ -1,0 +1,51 @@
+{% include 'load/meta_head.html' %}
+<script language="JavaScript" src="/static/load/mydate.js"></script>
+<link rel="stylesheet" href="/static/login/loading.css">
+<script src="/static/login/loading.js"></script>
+{% include 'load/meta_header.html' %}
+
+<div id="maskDiv">
+数据处理中...
+</div>
+
+<form action="{% url 'load:resultConf' %}" method="post">
+{% csrf_token %}
+<br />
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=1%></th>
+  <th width=30%>模型</th>
+  <th width=1%></th>
+  <th width=30%>模型</th>
+  <th width=1%></th>
+  <th width=30%>模型</th>
+</tr></thead>
+{% for d in datas %}
+{% if forloop.counter|add:2|divisibleby:3 %}<tr>{% endif %}
+  <td><input type="radio" name="data" value="{{ d.id }}" /></td>
+  <td>{{ d.filename }}</td>
+{% if forloop.counter|divisibleby:3 %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+<div align=center>
+  <font color=#007979>预测日期:</font>
+  {% for field in form %}{{ field }}{{ field.errors }}{% endfor %}
+  <button class="btn btn-primary" type="submit" onClick="change()">提交</button>
+</div>
+</form>
+<br />
+
+{% if output %}
+<table align=center width=960><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+{% include 'load/meta_footer.html' %}

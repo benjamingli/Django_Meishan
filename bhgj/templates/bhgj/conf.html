@@ -1,0 +1,49 @@
+{% include 'bhgj/meta_head.html' %}
+<link rel="stylesheet" href="/static/login/loading.css">
+<script src="/static/login/loading.js"></script>
+{% include 'bhgj/meta_header.html' %}
+
+<div id="maskDiv">
+数据处理中...
+</div>
+<br />
+<br />
+<br />
+<br />
+<form enctype="multipart/form-data" action="{% url 'bhgj:conf' %}" method="post">
+{% csrf_token %}
+<table align=center width=360>
+  <tr height=35>
+    <td align=right><font color=#007979>示例文件:</font></td>
+    <td align=left>&nbsp&nbsp&nbsp
+      <a href="/static/bhgj/7月保护告警.csv">7月保护告警.csv</a>
+    </td>
+  </tr>
+  <tr height=35>
+    <td align=right><font color=#007979>上传文件:</font></td>
+    <td align=left><input type="file" name="upfile" /></td>
+  </tr>
+  <tr height=35>
+    <td align=right><font color=#007979>小时阈值:</font></td>
+    <td align=left><input id="hT" name="hT" type="text" style="width:60px;" value="10" required /></td>
+  </tr>
+  <tr height=35>
+    <td align=right><font color=#007979>单日阈值:</font></td>
+    <td align=left><input id="dT" name="dT" type="text" style="width:60px;" value="50" required /></td>
+  </tr>
+</table>
+<br />
+<div align=center>
+  <button class="btn btn-primary" type="submit" onClick="change()">提交</button>
+</div>
+</form>
+<br />
+
+{% if output %}
+<table align=center width=360><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+
+{% include 'bhgj/meta_footer.html' %}

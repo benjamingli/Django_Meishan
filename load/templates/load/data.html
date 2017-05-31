@@ -1,0 +1,30 @@
+{% include 'load/meta_head.html' %}
+{% include 'load/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=35%>模型名称</th>
+  <th width=25%>对象列表</th>
+  <th width=15%>用户</th>
+  <th width=15%>日期</th>
+  <th width=10%>删除</th>
+</tr></thead>
+{% for w in datas %}
+<tr>
+  <td>{{ w.filename }}</td>
+  <td><a href="/upload/load/{{ w.fullname }}.name">列表下载</a></td>
+  <td>{{ w.user }}</td>
+  <td>{{ w.time|date:"Y-n-j" }}</td>
+  <td><a href="{% url 'load:data' %}{{ w.fullname }}/del/">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+{% include 'load/meta_footer.html' %}

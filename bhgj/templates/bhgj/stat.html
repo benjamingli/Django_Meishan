@@ -1,0 +1,21 @@
+{% include 'bhgj/meta_head.html' %}
+{% include 'bhgj/meta_header.html' %}
+
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=20%>时间</th>
+  <th width=55%>消息</th>
+  <th width=10%>类别</th>
+  <th width=15%>次数</th>
+</tr></thead>
+{{ data|safe }}
+</table>
+
+</td></tr>
+</table>
+<br />
+
+{% include 'bhgj/meta_footer.html' %}

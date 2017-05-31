@@ -1,0 +1,34 @@
+{% include 'load/meta_head.html' %}
+<script language="JavaScript" src="/static/load/mydate.js"></script>
+{% include 'load/meta_header.html' %}
+
+<br />
+<br />
+<br />
+<br />
+<form action="{% url 'load:weatherConf' %}" method="post">
+{% csrf_token %}
+<!--<input type="text" name="time" onfocus="MyCalendar.SetDate(this)">-->
+<table align=center width=360>
+{% for field in form %}
+  <tr height=35>
+  <td align=right><font color=#007979>{{ field.label }}:</font></td>
+  <td align=left>{{ field }}<br />{{ field.errors }}</td>
+  </tr>
+{% endfor %}
+</table>
+<br />
+<div align=center>
+  <button class="btn btn-primary" type="submit">提交</button>
+</div>
+</form>
+<br />
+
+{% if output %}
+<table align=center width=360><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+
+{% include 'load/meta_footer.html' %}

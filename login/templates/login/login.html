@@ -1,0 +1,47 @@
+{% include 'login/meta_head.html' %}
+{% include 'login/meta_header2.html' %}
+
+<br />
+<br />
+<br />
+<h2 align=center>
+  <font color=#007979>大数据分析平台</font>
+  <small>负荷预测与工况分析</small>
+</h2>
+
+<br />
+<div align=center><img src="/static/login/banner.jpg" border="0" /></div>
+<br />
+<br />
+<br />
+<form action="{% url 'login:index' %}" method="post">
+{% csrf_token %}
+{% for field in form %}
+    <!--{{ field.label }}-->
+    <div align=center>{{ field }}{{ field.errors }}</div>
+{% endfor %}
+<br />
+<div align=center><button type="submit">登录</button></div>
+</form>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+{% include 'login/meta_footer.html' %}

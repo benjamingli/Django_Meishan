@@ -1,0 +1,48 @@
+{% include 'load/meta_head.html' %}
+<link rel="stylesheet" href="/static/login/loading.css">
+<script src="/static/login/loading.js"></script>
+{% include 'load/meta_header.html' %}
+
+<div id="maskDiv">
+数据处理中...
+</div>
+<form action="{% url 'load:dataConf' %}" method="post">
+{% csrf_token %}
+<br />
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=1%></th>
+  <th width=30%>文件</th>
+  <th width=1%></th>
+  <th width=30%>文件</th>
+  <th width=1%></th>
+  <th width=30%>文件</th>
+</tr></thead>
+{% for w in rawCsvs %}
+{% if forloop.counter|add:2|divisibleby:3 %}<tr>{% endif %}
+  <td><input id="{{ w.id }}" name="{{ w.id }}" type="checkbox" /></td>
+  <td>{{ w.filename }}</td>
+{% if forloop.counter|divisibleby:3 %}</tr>{% endif %}
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+<div align=center>
+  <font color=#007979>模型名称:</font><input id="name" name="name" style="width:240px;" />
+  <button class="btn btn-primary" type="submit" onClick="change()">提交</button>
+</div>
+</form>
+<br />
+
+{% if output %}
+<table align=center width=960><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+{% include 'load/meta_footer.html' %}

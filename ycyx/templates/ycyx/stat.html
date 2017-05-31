@@ -1,0 +1,20 @@
+{% include 'ycyx/meta_head.html' %}
+{% include 'ycyx/meta_header.html' %}
+
+<table align=center width=960>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=30%>时间</th>
+  <th width=50%>线路</th>
+  <th width=20%>越限次数</th>
+</tr></thead>
+{{ data|safe }}
+</table>
+
+</td></tr>
+</table>
+<br />
+
+{% include 'ycyx/meta_footer.html' %}

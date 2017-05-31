@@ -1,0 +1,49 @@
+{% include 'cluster/meta_head.html' %}
+{% include 'cluster/meta_header.html' %}
+
+<br />
+<br />
+<br />
+<div align=center>
+  <a href="https://10.176.143.148:20026/HDFS/NameNode/214/explorer.html#/app1" title="集群存储浏览" target="_blank">
+    <img src="/static/cluster/hadoop_logo.jpg" width=240 height=80 />
+  </a>
+  <a href="https://10.176.143.148:20026/JobHistory/JobHistory/333/" title="任务运行浏览" target="_blank">
+    <img src="/static/cluster/spark_logo.png" width=240 height=80 />
+  </a>
+</div>
+
+<table align=center width=480>
+<tr><td>
+<table class="table table-hover">
+  <tr class="success" align=center><td>hadoop</td><td>运行中</td></tr>
+  <tr class="success" align=center><td>spark</td><td>运行中</td></tr>
+<!--{% ifequal hadoop 1 %}
+  <tr class="success" align=center><td>hadoop</td><td>运行中</td></tr>
+{% else %}
+  <tr class="danger" align=center><td>hadoop</td><td>未启动</td></tr>
+{% endifequal %}
+{% ifequal spark 1 %}
+  <tr class="success" align=center><td>spark</td><td>运行中</td></tr>
+{% else %}
+  <tr class="danger" align=center><td>spark</td><td>未启动</td></tr>
+{% endifequal %}-->
+</table>
+</td></tr>
+</table>
+
+<!--<div align=center>
+<a class="btn btn-success" href="{% url 'cluster:hadoopOn' %}">启动hadoop</a>
+<a class="btn btn-success" href="{% url 'cluster:sparkOn' %}">启动spark</a>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a class="btn btn-danger" href="{% url 'cluster:sparkOff' %}">关闭spark</a>
+<a class="btn btn-danger" href="{% url 'cluster:hadoopOff' %}">关闭hadoop</a>
+</div>-->
+
+{% if output %}
+<table align=center width=720><tr><td>
+{{ output|linebreaksbr }}
+</td></tr></table>
+{% endif %}
+
+{% include 'cluster/meta_footer.html' %}

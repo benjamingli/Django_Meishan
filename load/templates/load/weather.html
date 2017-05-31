@@ -1,0 +1,45 @@
+{% include 'load/meta_head.html' %}
+<script language="JavaScript">
+  function sub(){
+    var y = document.getElementById("year");
+    var m = document.getElementById("month");
+    top.location = "{% url 'load:weatherRoot' %}"+y.value+"/"+m.value+"/";
+  }            
+</script>
+{% include 'load/meta_header.html' %}
+
+<br />
+<table align=center width=960>
+<tr><td align=right>
+  <input id="year" style="width:60px;" />年
+  <input id="month" style="width:30px;" />月
+  <input type="button" value="查看" onclick="sub()">
+</td></tr>
+<tr><td>
+
+<table class="table table-hover">
+<thead><tr>
+  <th width=25%>日期</th>
+  <th width=15%>节假日</th>
+  <th width=15%>最高气温</th>
+  <th width=15%>最低气温</th>
+  <th width=15%>天气类别</th>
+  <th width=15%>删除记录</th>
+</tr></thead>
+{% for w in weathers %}
+<tr>
+  <td>{{ w.date|date:"Y-n-j" }}</td>
+  <td>{{ w.holiday }}</td>
+  <td>{{ w.maxTemp }}</td>
+  <td>{{ w.minTemp }}</td>
+  <td>{{ w.typeDay }}</td>
+  <td><a href="{% url 'load:weatherRoot' %}{{ w.date|date:'Y-n-j' }}/del/">删除</a></td>
+</tr>
+{% endfor %}
+</table>
+
+</td></tr>
+</table>
+
+
+{% include 'load/meta_footer.html' %}
